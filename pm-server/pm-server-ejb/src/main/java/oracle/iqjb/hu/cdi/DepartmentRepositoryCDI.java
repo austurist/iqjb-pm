@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package oracle.iqjb.hu;
+package oracle.iqjb.hu.cdi;
 
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -13,7 +13,7 @@ import oracle.iqjb.hu.pm.dm.Department;
  *
  * @author oracle
  */
-public abstract class DepartmentRepository {
+public abstract class DepartmentRepositoryCDI {
     
     abstract EntityManager getEntityManager();
     
