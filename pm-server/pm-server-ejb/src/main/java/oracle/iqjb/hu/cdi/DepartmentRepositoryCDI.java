@@ -22,6 +22,36 @@ public abstract class DepartmentRepositoryCDI {
         return dept;
     }
     
+    public void deleteByName(String deptname) {
+        List<Department> dl = getEntityManager().createQuery("select dept from Department dept where dept.name = :name")
+                .setParameter("name", deptname)
+                .getResultList();
+        
+        for (Department d : dl ) {
+            getEntityManager().remove(d);
+        }
+    }
+    
+    public List<Department> getByName(String deptname) {
+        List<Department> dl = getEntityManager().createQuery("select dept from Department dept where dept.name = :name")
+                .setParameter("name", deptname)
+                .getResultList();
+        
+        return dl;
+    }
+    
+    public Department getById(Long id) {
+        Department d = getEntityManager().find(Department.class, id);
+        
+        return d;
+    }
+    
+    public Department updateDept(Department dept) {
+        Department ret = getEntityManager().merge(dept);
+        
+        return ret;
+    }
+
     public List<Department> findAll() {
         List<Department> dl = getEntityManager().createQuery("select dept from Department dept", Department.class).getResultList();
         
